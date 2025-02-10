@@ -11,7 +11,7 @@
 </p>
 
 <p align="left">
-  :link: Link do vídeo do youtube explicando o funcionamento do sistema: [https://youtu.be/bzMwDZdirmg?feature=shared](https://www.youtube.com/watch?v=P7P_5g_qpps](https://www.youtube.com/watch?v=P7P_5g_qpps)
+  :link: Link do vídeo do youtube explicando o funcionamento do sistema: https://www.youtube.com/watch?v=P7P_5g_qpps
 </p>
 <p align="left">
   :pill: Funcionalidade: Ao realizar o login o usuário e redirecionado para uma tela de lista de medicamentos. Que mostra os medicamentos cadastrados. Também, é possível realizar o CRUD desses medicamentos.
