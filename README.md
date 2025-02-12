@@ -10,7 +10,7 @@
   :link: Link do vídeo do youtube explicando o funcionamento do sistema: https://www.youtube.com/watch?v=P7P_5g_qpps
 </p>
 
-Integrande: Victor Tenório Ribeiro Bernardes
+Integrante: Victor Tenório Ribeiro Bernardes
 
 
 
