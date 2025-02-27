@@ -7,10 +7,16 @@ import org.springframework.data.jpa.repository.Query
 
 interface PrescriptionRepository : JpaRepository<Prescription, Long> {
 
-    /*@Query("select distinct p from Prescription p" +
-            " join p.medicines m" +
-            " where m.medicineName = :medicine" +
+    @Query("select distinct p from Prescription p" +
+            " join p.doctor d" +
+            " where d.id = :doctor" +
             " order by p.id")
-    fun findByMedicine(medicine: String): List<Prescription>*/
+    fun findByDoctor(doctor: Long): List<Prescription>
+
+    @Query("select distinct p from Prescription p" +
+            " join p.patient pa" +
+            " where pa.id = :patientId" +
+            " order by p.id")
+    fun findByPatient(patientId: Long): List<Prescription>
 
 }

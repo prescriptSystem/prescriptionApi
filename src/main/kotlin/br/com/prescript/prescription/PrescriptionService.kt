@@ -62,6 +62,12 @@ class PrescriptionService(
     fun findByIdOrNull(id: Long) =
         prescriptionRepository.findByIdOrNull(id)
 
+    fun findByDoctor(idDoctor: Long) =
+        prescriptionRepository.findByDoctor(idDoctor)
+
+    fun findByPatient(idPatient: Long) =
+        prescriptionRepository.findByPatient(idPatient)
+
     /*fun addMedicine(idPrescription: Long, idMedicine: Long): Boolean {
         val medicine = medicineRepository.findByIdOrNull(idMedicine) ?: throw NotFoundException("Medicine ${idMedicine} not found")
         val prescription = prescriptionRepository.findByIdOrNull(idPrescription) ?: throw NotFoundException("Prescription ${idPrescription} not found")

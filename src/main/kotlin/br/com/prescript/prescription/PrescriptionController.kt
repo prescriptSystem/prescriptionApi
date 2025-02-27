@@ -21,7 +21,7 @@ class PrescriptionController(private val prescriptionService: PrescriptionServic
     @SecurityRequirement(name = "Prescript")
     fun insert(@PathVariable idDoctor: Long, @PathVariable idPatient: Long , auth: Authentication): ResponseEntity<Void> {
         val user = auth.principal as UserToken
-        return if (idDoctor == user.id) ResponseEntity.status(HttpStatus.FORBIDDEN).build()
+        return if (idPatient == user.id) ResponseEntity.status(HttpStatus.FORBIDDEN).build()
         else if (prescriptionService.insert(idDoctor, idPatient)) ResponseEntity.ok().build()
         else ResponseEntity.noContent().build()
 
@@ -31,13 +31,21 @@ class PrescriptionController(private val prescriptionService: PrescriptionServic
     @GetMapping
     @PreAuthorize("hasRole('DOCTOR') || hasRole('PATIENT')")
     @SecurityRequirement(name = "Prescript")
-    fun findAll(@RequestParam dir: String = "ASC"): ResponseEntity<List<PrescriptionResponse>> {
+    fun findAll(@RequestParam dir: String = "ASC", auth: Authentication): ResponseEntity<List<PrescriptionResponse>> {
+        val user = auth.principal as UserToken
         val sortDir = SortDir.findOrNull(dir)
         if (sortDir == null)
             return ResponseEntity.badRequest().build()
-        return prescriptionService.findAll(sortDir)
+        if(user.roles.contains("DOCTOR"))
+        return prescriptionService.findByDoctor(user.id)
             .map { PrescriptionResponse(it) }
             .let { ResponseEntity.ok(it) }
+        else if(user.roles.contains("PATIENT"))
+            return prescriptionService.findByPatient(user.id)
+                .map { PrescriptionResponse(it) }
+                .let { ResponseEntity.ok(it) }
+        else
+            return ResponseEntity.badRequest().build()
     }
 
     /*@GetMapping("/{id}")
