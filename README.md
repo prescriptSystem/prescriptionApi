@@ -10,6 +10,11 @@
   :link: Link do vídeo do youtube explicando o funcionamento do sistema: https://www.youtube.com/watch?v=P7P_5g_qpps
 </p>
 
+<p align="left">
+  :link: Link do vídeo do youtube explicando a implementação de segurança do sistema: https://www.youtube.com/watch?v=AfhCLsaiBm8
+</p>
+
+
 Integrante: Victor Tenório Ribeiro Bernardes
 
 
